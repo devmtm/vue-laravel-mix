@@ -12,6 +12,10 @@ const app = new Vue({
   render: h => h(App),
   created() {
     console.log('App Created!')
+  },
+
+  data: {
+    name: "Ahmedo"
   }
 });
 
