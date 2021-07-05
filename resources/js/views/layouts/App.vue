@@ -1,13 +1,12 @@
 <template>
   <div>
-    Hello Template
-    App {{ fullName }}
-    <input type="text" v-model="firstName">
-    <br>
-   Full Name <input type="text" v-model="fullName">
-    <MyHeader :firstName="firstName" @lastNameChanged="lastNameChanged" @firstNameChanged="firstNameChanged"></MyHeader>
-    <span>***************************************</span>
-    <example-component></example-component>
+    <div>
+      <router-link :to="{name:'home'}">Home</router-link>
+      <router-link :to="{name:'example1'}">Example</router-link>
+    </div>
+
+    <router-view></router-view>
+<!--    <example-component></example-component>-->
   </div>
 </template>
 
@@ -24,7 +23,8 @@ export default {
 
   data: () => ({
     firstName: "Ahmed",
-    lastName: ""
+    lastName: "",
+    id: 1
   }),
 
   computed: {
@@ -50,8 +50,6 @@ export default {
   },
 
   methods: {
-
-
 
     lastNameChanged(name) {
       this.lastName = name

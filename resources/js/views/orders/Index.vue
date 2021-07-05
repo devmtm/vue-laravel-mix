@@ -1,21 +1,7 @@
 <template>
   <div>
-    <div style="display: inline-flex">
-      <p class="pt-10">Message: {{ message }}</p>
-      <button v-on:click="reverseMessage">Reverse Message</button>
-    </div>
-    <div class="pt-10">
-      <ol>
-        <li v-for="(todo, index) in todos">
-          {{ todo.text }} <input v-model="todo.text"> <button @click="remove(index)">Remove</button>
-        </li>
-      </ol>
-
-      <button v-on:click="addItem">Add Item</button>
-      <button v-on:click="submitForm">Submit</button>
-
-    </div>
-
+    Hello Index
+    <router-link :to="{name: 'orders.create'}">New</router-link>
   </div>
 </template>
 
