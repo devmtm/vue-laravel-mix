@@ -1,47 +1,43 @@
 <template>
   <div>
     Hello Index
+    <ul>
+      <li v-for="order in orders">{{ order.name }}</li>
+    </ul>
     <router-link :to="{name: 'orders.create'}">New</router-link>
   </div>
 </template>
 
 <script>
-export default {
 
-  props: ['id'],
+export default {
 
   data: () => (
       {
-        message: 'Hello Yousef!',
-        todos: [
-          {text: 'Learn JavaScript'},
-          {text: 'Learn Vue'},
-          {text: 'Build something awesome'}
-        ]
-
+        orders: null
       }
   ),
 
   methods: {
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
-    },
 
-    addItem() {
-      this.todos.push({text: 'New ' + new Date().toLocaleString()})
-    },
-
-    remove(index) {
-      this.todos.splice(index, 1)
-    },
-
-    submitForm() {
-      console.log(this.todos)
-    },
   },
 
   mounted() {
-    console.log('Example mounted.', this.id)
+    let _this = this
+    axios.get('/api/orders', {headers: [], params: {id: 10}})
+        .then(function (response) {
+          // handle success
+          _this.orders = response.data.orders
+          // console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+    console.log('Orders Index mounted.')
   }
 }
 </script>

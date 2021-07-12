@@ -1,9 +1,12 @@
 import App from "./views/layouts/App.vue";
 import ExampleComponent from "./components/ExampleComponent.vue";
 import router from "./router";
+import axios from "./utils/axios";
 
+
+
+window.axios = axios;
 window.Vue = require('vue').default;
-
 
 // Vue.component('app', App)
 Vue.component('example', ExampleComponent)
